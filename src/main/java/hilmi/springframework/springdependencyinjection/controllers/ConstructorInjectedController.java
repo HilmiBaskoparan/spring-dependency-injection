@@ -1,7 +1,9 @@
 package hilmi.springframework.springdependencyinjection.controllers;
 
 import hilmi.springframework.springdependencyinjection.services.GreetingService;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class ConstructorInjectedController {
 
     private final GreetingService greetingService;
