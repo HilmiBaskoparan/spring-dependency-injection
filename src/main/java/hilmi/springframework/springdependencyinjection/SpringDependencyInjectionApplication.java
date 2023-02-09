@@ -1,9 +1,6 @@
 package hilmi.springframework.springdependencyinjection;
 
-import hilmi.springframework.springdependencyinjection.controllers.ConstructorInjectedController;
-import hilmi.springframework.springdependencyinjection.controllers.MyController;
-import hilmi.springframework.springdependencyinjection.controllers.PropertyInjectedController;
-import hilmi.springframework.springdependencyinjection.controllers.SetterInjectedController;
+import hilmi.springframework.springdependencyinjection.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -29,6 +26,10 @@ public class SpringDependencyInjectionApplication {
 		System.out.println("\n---------- Constructor ----------");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) context.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+		// Profile
+		I18nController i18nController = (I18nController) context.getBean("i18nController");
+		System.out.println("\n" + i18nController.sayHello());
 
 	}
 
