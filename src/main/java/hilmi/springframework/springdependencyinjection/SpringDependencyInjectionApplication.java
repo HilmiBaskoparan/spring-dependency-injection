@@ -4,7 +4,9 @@ import hilmi.springframework.springdependencyinjection.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = {"hilmi.springframework.springdependencyinjection", "com.springframework.pets"})
 @SpringBootApplication
 public class SpringDependencyInjectionApplication {
 
@@ -30,6 +32,11 @@ public class SpringDependencyInjectionApplication {
 		// Profile
 		I18nController i18nController = (I18nController) context.getBean("i18nController");
 		System.out.println("\n" + i18nController.sayHello());
+
+		// Pet
+		PetController petController = (PetController) context.getBean("petController", PetController.class);
+		System.out.println("\n--- The Best Pet is ---");
+		System.out.println(petController.whichPetIsTheBest());
 
 	}
 
