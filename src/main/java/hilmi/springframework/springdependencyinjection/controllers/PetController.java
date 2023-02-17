@@ -1,7 +1,6 @@
 package hilmi.springframework.springdependencyinjection.controllers;
 
-import hilmi.springframework.springdependencyinjection.services.PetService;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.springframework.pets.PetService;
 import org.springframework.stereotype.Controller;
 
 @Controller
