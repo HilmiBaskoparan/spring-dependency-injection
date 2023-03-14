@@ -2,14 +2,28 @@ package hilmi.springframework.springdependencyinjection.config;
 
 import com.springframework.pets.PetService;
 import com.springframework.pets.PetServiceFactory;
+import hilmi.springframework.springdependencyinjection.datasource.FakeDataSource;
 import hilmi.springframework.springdependencyinjection.repositories.EnglishGreetingRepository;
 import hilmi.springframework.springdependencyinjection.repositories.EnglishGreetingRepositoryImpl;
 import hilmi.springframework.springdependencyinjection.services.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
+@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${hilmi.username}") String username,
+                                  @Value("${hilmi.password}") String password,
+                                  @Value("${hilmi.jdbcUrl}") String jdbcUrl) {
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcUrl(jdbcUrl);
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory petServiceFactory() {

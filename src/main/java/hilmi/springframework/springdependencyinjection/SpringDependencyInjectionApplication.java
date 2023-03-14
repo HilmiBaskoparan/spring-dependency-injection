@@ -1,6 +1,7 @@
 package hilmi.springframework.springdependencyinjection;
 
 import hilmi.springframework.springdependencyinjection.controllers.*;
+import hilmi.springframework.springdependencyinjection.datasource.FakeDataSource;
 import hilmi.springframework.springdependencyinjection.services.PrototypeBean;
 import hilmi.springframework.springdependencyinjection.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -52,6 +53,11 @@ public class SpringDependencyInjectionApplication {
 		PrototypeBean prototypeBean2 = context.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+		// Property Source
+		FakeDataSource fakeDataSource = context.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcUrl());
 	}
 
 }
